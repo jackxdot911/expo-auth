@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { router, useFocusEffect } from "expo-router";
 import { fetchUserAttributes, signOut } from "@aws-amplify/auth";
-
+import axios from 'axios'
 import { fetchAuthSession } from "aws-amplify/auth"; 
 
 
@@ -34,6 +34,8 @@ export default function Index() {
   const checkUserSession = async () => {
     try {
       const { email, email_verified, sub } = await fetchUserAttributes();
+      console.log(email);
+      
       setUserDetails({ email, email_verified, sub });
     } catch (err) {
       console.log("User not logged in or error getting user:", err);
@@ -51,6 +53,7 @@ export default function Index() {
       });
       console.log("id token", session?.tokens?.idToken);
       console.log("access token", session?.tokens?.accessToken);
+            
     } catch (err) {
       console.log("User not logged in or error getting user:", err);
       setUserDetails(null);
@@ -76,7 +79,7 @@ export default function Index() {
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to the Index Page!</Text>
       {userDetails ? (
-        <Text style={styles.email}>Email: {userDetails.sub}</Text>
+        <Text style={styles.email}>Email: {userDetails?.email}</Text>
       ) : (
         <Text style={styles.errorText}>User not found</Text>
       )}
@@ -122,3 +125,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
+
+
