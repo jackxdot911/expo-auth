@@ -1,4 +1,4 @@
-import  { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import {
   View,
   Button,
@@ -8,10 +8,8 @@ import {
 } from "react-native";
 import { router, useFocusEffect } from "expo-router";
 import { fetchUserAttributes, signOut } from "@aws-amplify/auth";
-import axios from 'axios'
-import { fetchAuthSession } from "aws-amplify/auth"; 
-
-
+import axios from "axios";
+import { fetchAuthSession, signInWithRedirect } from "aws-amplify/auth";
 
 export default function Index() {
   const [userDetails, setUserDetails] = useState<any>();
@@ -35,7 +33,7 @@ export default function Index() {
     try {
       const { email, email_verified, sub } = await fetchUserAttributes();
       console.log(email);
-      
+
       setUserDetails({ email, email_verified, sub });
     } catch (err) {
       console.log("User not logged in or error getting user:", err);
@@ -53,7 +51,6 @@ export default function Index() {
       });
       console.log("id token", session?.tokens?.idToken);
       console.log("access token", session?.tokens?.accessToken);
-            
     } catch (err) {
       console.log("User not logged in or error getting user:", err);
       setUserDetails(null);
@@ -96,6 +93,10 @@ export default function Index() {
           style={styles.loading}
         />
       )}
+      <Button
+        title="Sign In with Google"
+        onPress={() => signInWithRedirect({ provider: "Google" })}
+      />
     </View>
   );
 }
@@ -125,6 +126,3 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
-
-
-
