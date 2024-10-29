@@ -63,3 +63,38 @@ amplify pull --appId ddt7ykh8752cm --envName dev
 
 
 amplify pushs  
+
+
+
+
+
+
+
+
+
+
+
+
+
+Manual Configuration:
+
+    If you still do not see the prompts to enter your Client ID and Secret during the amplify update auth, you can manually add these credentials in your Amplify configuration files:
+        Navigate to your amplify/backend/auth/<auth_resource_name>/parameters.json file.
+        Add or update the fields for your social provider credentials like this:
+
+        json
+
+        {
+          "OAuth": {
+            "WebDomain": "your_app.auth.us-east-1.amazoncognito.com",
+            "AppClientId": "YOUR_CLIENT_ID",
+            "AppClientSecret": "YOUR_CLIENT_SECRET",
+            "SignInRedirectURI": "myapp://",
+            "SignOutRedirectURI": "myapp://"
+          }
+        }
+
+Push Changes:
+
+    After making changes in the parameters file, run amplify push to deploy the changes.
+
