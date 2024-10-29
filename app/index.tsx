@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import  { useCallback, useState } from "react";
 import {
   View,
   Button,
@@ -61,7 +61,7 @@ export default function Index() {
   };
 
   useFocusEffect(
-    React.useCallback(() => {
+    useCallback(() => {
       checkUserSession();
     }, [])
   );
