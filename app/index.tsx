@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import {
   View,
   Button,
@@ -9,7 +9,9 @@ import {
 import { router, useFocusEffect } from "expo-router";
 import { fetchUserAttributes, signOut } from "@aws-amplify/auth";
 
-import { fetchAuthSession } from "aws-amplify/auth";
+import { fetchAuthSession } from "aws-amplify/auth"; 
+
+
 
 export default function Index() {
   const [userDetails, setUserDetails] = useState<any>();
