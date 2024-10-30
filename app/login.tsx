@@ -72,6 +72,9 @@ export default function Login() {
       <Pressable disabled={loading} onPress={() => router.push("/signup")}>
         <Text style={{ padding: 10, color: "blue" }}>Go to Signup</Text>
       </Pressable>
+      <Pressable disabled={loading} onPress={() => router.push("/fedrated")}>
+        <Text style={{ padding: 10, color: "blue" }}>fedrated</Text>
+      </Pressable>
     </View>
   );
 }

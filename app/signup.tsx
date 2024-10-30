@@ -19,7 +19,7 @@ export default function Signup() {
   const [isOtpSent, setIsOtpSent] = useState(false); // Track signup or OTP step
 
   const [loading, setLoading] = useState(false);
-  const [error , setError] = useState('')
+  const [error, setError] = useState("");
 
   const handleSignup = async () => {
     setLoading(true);
@@ -33,7 +33,7 @@ export default function Signup() {
     } catch (error: any) {
       console.log("Error signing up:", error.message);
       Alert.alert("Signup Error", error.message);
-      setError(error.message)
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -48,7 +48,7 @@ export default function Signup() {
     } catch (error: any) {
       console.log("Error verifying OTP:", error.message);
       Alert.alert("Verification Error", error.message);
-      setError(error.message)
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -90,7 +90,7 @@ export default function Signup() {
           placeholderTextColor="#000"
         />
       )}
-{error !== '' && <Text>{error}</Text>}
+      {error !== "" && <Text>{error}</Text>}
       <Button
         disabled={loading}
         title={isOtpSent ? "Verify OTP" : "Signup"}
@@ -104,7 +104,10 @@ export default function Signup() {
         />
       )}
       <Pressable disabled={loading} onPress={() => router.push("/login")}>
-        <Text style={{padding : 10 , color : 'blue'}}>Go to login</Text>
+        <Text style={{ padding: 10, color: "blue" }}>Go to login</Text>
+      </Pressable>
+      <Pressable disabled={loading} onPress={() => router.push("/fedrated")}>
+        <Text style={{ padding: 10, color: "blue" }}>fedrated</Text>
       </Pressable>
     </View>
   );
