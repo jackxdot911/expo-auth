@@ -9,6 +9,7 @@ import {
 import { router, useFocusEffect } from "expo-router";
 import { fetchUserAttributes, signOut } from "@aws-amplify/auth";
 import { fetchAuthSession, signInWithRedirect } from "aws-amplify/auth";
+import authHeader from "@/services/authHeader";
 
 export default function Index() {
   const [userDetails, setUserDetails] = useState<any>();
@@ -33,6 +34,8 @@ export default function Index() {
       const { email, email_verified, sub } = await fetchUserAttributes();
       console.log(email);
 
+      authHeader()
+      
       setUserDetails({ email, email_verified, sub });
     } catch (err) {
       console.log("User not logged in or error getting user:", err);
