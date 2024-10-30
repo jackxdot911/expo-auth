@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import { router, useFocusEffect } from "expo-router";
 import { fetchUserAttributes, signOut } from "@aws-amplify/auth";
-import axios from "axios";
 import { fetchAuthSession, signInWithRedirect } from "aws-amplify/auth";
 
 export default function Index() {
